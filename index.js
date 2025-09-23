@@ -19,7 +19,7 @@ res.json({received: data});
 app.listen(PORT, () => {
  console.log("server running at http://<your-Vm-ip>:${PORT});
 });
-*/
+
 // index.js
 const express = require('express');
 const app = express();
@@ -42,5 +42,27 @@ app.get('/', (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://34.56.118.196:${PORT}`);
+});
+
+*/
+// index.js
+const express = require('express');
+const path = require('path');
+const app = express();
+const PORT = 3000;
+
+// Middleware
+app.use(express.json());
+
+// Serve static files from "public"
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Import routes
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/users', userRoutes);
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
 
