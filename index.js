@@ -63,6 +63,6 @@ app.use('/api/users', userRoutes);
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://34.56.118.196/:${PORT}`);
+  console.log(`🚀 Server running at http://34.56.118.196:${PORT}`);
 });
 
