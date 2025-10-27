@@ -98,11 +98,13 @@ const express = require("express");
 const path = require("path");
 const logger = require("./logger"); // <-- import custom logger
 const app = express();
-const PORT = 3000;
+const PORT = 5000;
 
 // Middleware
 app.use(express.json());
-
+app.get("/api/test", (req, res) => {
+  res.json({ message: "Backend working!" });
+});
 // Request logging middleware (logs every incoming request)
 app.use((req, res, next) => {
   logger.info(`${req.method} ${req.url} from ${req.ip}`);
@@ -121,7 +123,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/logs", logRoutes); // <-- enable frontend → backend logs
 
 // Start server
-app.listen(PORT, () => {
-  logger.info(`🚀 Server running at http://34.31.230.105:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  logger.info(`🚀 Server running at http://34.31.230.105`);
 });
 
